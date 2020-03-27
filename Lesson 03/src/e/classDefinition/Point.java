@@ -20,21 +20,48 @@ public class Point {
 		this.x = val;
 		this.y = val;
 	}
-	
+
 	// methods - getters and setters
 	public int getX() {
 		return x;
 	}
+
 	public int getY() {
 		return y;
 	}
-	
+
 	public void setX(int x) {
 		this.x = x;
 	}
-	
-	// add a set method for y
-	
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
 	// methods - other methods
+
+	public void print() {
+		System.out.print("(");
+		System.out.print(x);
+		System.out.print(", ");
+		System.out.print(y);
+		System.out.println(")");
+	}
+
+	public void moveRight() {
+		x++;
+	}
+
+	public void moveLeft() {
+		x--;
+	}
+
+	public void moveUp() {
+		y++;
+	}
+
+	public void moveDown() {
+		y--;
+	}
 
 }

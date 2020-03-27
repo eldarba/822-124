@@ -15,6 +15,26 @@ public class Test {
 
 		System.out.println(p3.getX());
 		System.out.println(p3.getY());
+		
+		System.out.println("===============");
+		
+		p1.print();
+		p2.print();
+		p3.print();
+
+		System.out.println("===============");
+		p1.print();
+		
+		p1.moveRight();
+		p1.moveRight();
+		p1.moveRight();
+		
+		p1.print();
+		
+		p1.moveUp();
+		p1.moveUp();
+		
+		p1.print();
 	}
 
 }
