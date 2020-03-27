@@ -30,6 +30,27 @@ public class Demo0 {
 		System.out.println(0.33333333333333333333333333333F);
 		
 		double pi = 3.14;
+		
+		// logical
+		boolean b1 = true;
+		boolean b2 = false;
+		boolean b3 = 100 > 200;
+		boolean b4 = 100 < 200;
+		System.out.println(b1);
+		System.out.println(b2);
+		System.out.println(b3);
+		System.out.println(b4);
+		
+//		character - 16 bit unicode
+		// A, 1, .
+		char c1 = 'A';
+		char c2 = 65;
+		char c3 = 'à';
+		char c4 = 1488;
+		System.out.println(c1);
+		System.out.println(c2);
+		System.out.println(c3);
+		System.out.println(c4);
 	}
 
 }
