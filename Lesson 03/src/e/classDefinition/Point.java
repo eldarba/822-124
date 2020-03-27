@@ -20,6 +20,7 @@ public class Point {
 		this.x = val;
 		this.y = val;
 	}
+	
 	// methods - getters and setters
 	public int getX() {
 		return x;
@@ -27,6 +28,13 @@ public class Point {
 	public int getY() {
 		return y;
 	}
+	
+	public void setX(int x) {
+		this.x = x;
+	}
+	
+	// add a set method for y
+	
 	// methods - other methods
 
 }
