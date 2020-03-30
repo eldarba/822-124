@@ -35,6 +35,8 @@ public class Test {
 		p1.moveUp();
 		
 		p1.print();
+		
+		System.out.println("end");
 	}
 
 }

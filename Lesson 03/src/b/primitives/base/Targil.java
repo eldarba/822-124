@@ -15,7 +15,8 @@ public class Targil {
 		// your code here:
 		int x = 50;
 		double y = 10.75;
-		long z = 999999999999999L;
+//		long z = 999999999999999L;
+		long z = 100000000000000000L;
 		
 		double sum = x + y + z;
 		
