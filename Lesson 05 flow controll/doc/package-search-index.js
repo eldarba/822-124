@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"a.concatenation"},{"l":"All Packages","url":"allpackages-index.html"},{"l":"b.casting"},{"l":"b.scannerDemo"},{"l":"c.flowcontrol.ifConstruct"},{"l":"c.flowcontrol.ifConstruct.exercise"},{"l":"d.flowcontrol.switchConstruct"},{"l":"e.flowcontrol.loops"},{"l":"e.flowcontrol.loops.game"}]
