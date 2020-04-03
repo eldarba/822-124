@@ -4,12 +4,18 @@ public class Demo1 {
 
 	public static void main(String[] args) {
 
-		int x = (int) (Math.random() * 11);
-		System.out.println(x);
+		int key = 3;
 
-		if (x > 5) {
-			System.out.println("Big");
-			System.out.println("Big");
+		switch (key) {
+		case 1:
+			System.out.println("ON");
+			break;
+		case 2:
+			System.out.println("OFF");
+			break;
+		case 3:
+			System.out.println("STAND_BY");
+			break;
 		}
 
 	}

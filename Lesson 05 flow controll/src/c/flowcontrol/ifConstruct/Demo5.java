@@ -1,6 +1,6 @@
-package d.flowcontrol.switchConstruct;
+package c.flowcontrol.ifConstruct;
 
-public class Demo2 {
+public class Demo5 {
 
 	public static void main(String[] args) {
 
