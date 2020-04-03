@@ -18,8 +18,9 @@ public class Demo1 {
 
 		// *** your code here ***
 
-		System.out.println((int) (Math.random() * 11));
-		int x = (int)(Math.random()*11);
+		int x = (int) (Math.random() * 11);
+		int y = (int) (Math.random() * 11);
+		System.out.println(x + " + " + y + " = " + (x+y));
 
 	}
 

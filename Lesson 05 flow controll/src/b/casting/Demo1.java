@@ -45,6 +45,12 @@ public class Demo1 {
 			long b = (long) a; // explicit casting (not any float can be represented as long)
 			System.out.println(b);
 		}
+		
+		System.out.println((int)5.2);
+		System.out.println((int)-5.2);
+		
+		byte x = (byte)129;
+		System.out.println(x);
 	}
 
 }
