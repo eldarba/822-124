@@ -13,11 +13,15 @@ public class Tar1 {
 		 * this is just another way to randomize numbers. a little bit different than
 		 * what we learned:
 		 */
+		// create an object of type Random
 		Random random = new Random();
-		int a = random.nextInt(101);
-		int b = random.nextInt(101);
+		// use the Random object to randomize numbers
+		int a = random.nextInt(101); // 0 - 100
+		int b = random.nextInt(101); // 0 - 100
 
+		// print the numbers
 		System.out.println(a + ", " + b);
+		// get the maximum and print
 		int max = a > b ? a : b;
 		System.out.println("max: " + max);
 	}
