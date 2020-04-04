@@ -2,7 +2,7 @@ package exercise06.loops;
 
 import java.util.Random;
 
-public class Tar2 {
+public class Tar02 {
 	/*
 	 * Create a class that defines two random values and prints all values between
 	 * them. note - which variable holds the higher value is not known.
