@@ -15,9 +15,9 @@ public class Tar1 {
 		 */
 		// create an object of type Random
 		Random random = new Random();
-		// use the Random object to randomize numbers
-		int a = random.nextInt(101); // 0 - 100
-		int b = random.nextInt(101); // 0 - 100
+		// use the Random object to randomize numbers (0 - 100)
+		int a = random.nextInt(101);
+		int b = random.nextInt(101);
 
 		// print the numbers
 		System.out.println(a + ", " + b);
