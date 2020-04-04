@@ -5,9 +5,9 @@ public class LongVsFloat {
 	public static void main(String[] args) {
 
 		/*
-		 * long is a 64 bit integer type - it represent 2^64 different numbers.
+		 * long is a 64 bit integer type - it represents 2^64 different numbers.
 		 * 
-		 * float is a 32 bit decimal type - it represent 2^32 different numbers (less
+		 * float is a 32 bit decimal type - it represents 2^32 different numbers (less
 		 * than long).
 		 * 
 		 * since long is an integer, the distance between one value to the next is
