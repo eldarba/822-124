@@ -2,7 +2,7 @@ package exercise06.loops;
 
 import java.util.Random;
 
-public class Tar9 {
+public class Tar09 {
 
 	/*
 	 * Create a class that defines a random value between 0-50 and prints Fibonacci
