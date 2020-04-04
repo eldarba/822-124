@@ -2,7 +2,7 @@ package exercise06.loops;
 
 import java.util.Random;
 
-public class Tar7BigInteger {
+public class Tar07 {
 
 	/*
 	 * Create a class that defines a random number between 0-100 and prints the
@@ -12,12 +12,15 @@ public class Tar7BigInteger {
 	public static void main(String[] args) {
 		Random random = new Random();
 		int n = random.nextInt(100); // 0 - 100
-		int factorial = 1;
+		double factorial = 1;
 
 		for (int i = 2; i <= n; i++) {
 			factorial *= i;
-			System.out.println(factorial);
+//			System.out.println(factorial); // to see the computations
 		}
+
+		System.out.println("=====================");
+		System.out.println(n + "! = " + factorial);
 
 	}
 
