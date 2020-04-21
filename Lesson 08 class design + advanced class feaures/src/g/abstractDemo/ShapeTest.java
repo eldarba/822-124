@@ -11,6 +11,9 @@ public class ShapeTest {
 		s = new Rectangle(5, 3);
 		System.out.println("rectangle area: " + s.getArea());
 
+		s = new Circle(3);
+		System.out.println("Circle area: " + s.getArea());
+
 	}
 
 }
