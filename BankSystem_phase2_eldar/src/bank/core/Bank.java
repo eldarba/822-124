@@ -58,7 +58,7 @@ public class Bank {
 	 */
 	public void removeClient(int clientId) {
 		for (int i = 0; i < clients.length; i++) {
-			if (clients[i] == null && clients[i].getId() == clientId) {
+			if (clients[i] != null && clients[i].getId() == clientId) {
 				Client currClient = clients[i];
 				clients[i] = null;
 				// LOG THE OPERATION ===
