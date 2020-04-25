@@ -30,18 +30,19 @@ public class BankApp {
 
 	private void showMenue() {
 		System.out.println("\n\t=== MENU =======================================");
-		System.out.println("\tadd client ............. ac");
-		System.out.println("\tadd client account ..... aca");
+		System.out.println("\tadd client .................. ac");
+		System.out.println("\tadd client account .......... aca");
 		System.out.println();
-		System.out.println("\tremove client .......... rc");
-		System.out.println("\tremove client account .. rca");
+		System.out.println("\tremove client ............... rc");
+		System.out.println("\tremove client account ....... rca");
 		System.out.println();
-		System.out.println("\tdeposit ................ d");
-		System.out.println("\twithdraw ............... w");
+		System.out.println("\tdeposit ..................... d");
+		System.out.println("\twithdraw .................... w");
 		System.out.println();
-		System.out.println("\tprint client details ... pcd");
-		System.out.println("\tprint client account ... pca");
-		System.out.println("\tprint all clients ...... pac");
+		System.out.println("\tprint client details ........ pcd");
+		System.out.println("\tprint client account ........ pca");
+		System.out.println("\tprint all clients ........... pac");
+		System.out.println("\tprint all client accounts ... paca");
 		System.out.println("\tquit ................... q");
 		System.out.println("\t================================================\n");
 		System.out.print("Your command: ");
@@ -74,9 +75,11 @@ public class BankApp {
 		case "pca":
 			printClientAccount();
 			break;
-
 		case "pac":
 			printAllClients();
+			break;
+		case "paca":
+			printAllClientAccounts();
 			break;
 		case "q":
 			exit();
@@ -87,6 +90,7 @@ public class BankApp {
 	}
 
 	private void addClient() {
+		System.out.println("ACTION: add client");
 		System.out.print("enter client id: ");
 		int id = Integer.parseInt(sc.nextLine());
 		System.out.print("enter client name: ");
@@ -98,6 +102,7 @@ public class BankApp {
 	}
 
 	private void addClientAccount() {
+		System.out.println("ACTION: add client account");
 		Client client = getClient();
 		if (client != null) {
 			System.out.print("enter account id: ");
@@ -113,6 +118,7 @@ public class BankApp {
 	}
 
 	private void removeClient() {
+		System.out.println("ACTION: remove client");
 		Client c = getClient();
 		if (c != null) {
 			bank.removeClient(c.getId());
@@ -123,6 +129,7 @@ public class BankApp {
 	}
 
 	private void removeClientAccount() {
+		System.out.println("ACTION: remove client account");
 		Client c = getClient();
 		if (c != null) {
 			System.out.print("enter account id to remove: ");
@@ -135,6 +142,7 @@ public class BankApp {
 	}
 
 	private void deposit() {
+		System.out.println("ACTION: deposit");
 		Client c = getClient();
 		if (c != null) {
 			System.out.print("enter deposit amount: ");
@@ -147,6 +155,7 @@ public class BankApp {
 	}
 
 	private void withdraw() {
+		System.out.println("ACTION: withdraw");
 		Client c = getClient();
 		if (c != null) {
 			System.out.print("enter withdraw amount: ");
@@ -159,6 +168,7 @@ public class BankApp {
 	}
 
 	private void printClientDetails() {
+		System.out.println("ACTION: print client details");
 		Client c = getClient();
 		if (c != null) {
 			System.out.println("id: " + c.getId() + ", name: " + c.getName() + ", balance: " + c.getBalance()
@@ -169,6 +179,7 @@ public class BankApp {
 	}
 
 	private void printClientAccount() {
+		System.out.println("ACTION: print client account");
 		Client c = getClient();
 		if (c != null) {
 			System.out.print("enter account index: ");
@@ -185,6 +196,7 @@ public class BankApp {
 	}
 
 	private void printAllClients() {
+		System.out.println("ACTION: print all clients");
 		System.out.println("\n=========List of bank clients ====");
 		Client[] clients = bank.getClients();
 		for (int i = 0; i < clients.length; i++) {
@@ -193,6 +205,25 @@ public class BankApp {
 					+ ", fortune: " + c.getFortune());
 		}
 		System.out.println("==================================\n");
+
+	}
+
+	private void printAllClientAccounts() {
+		System.out.println("ACTION: print all client accounts");
+		Client c = getClient();
+		if (c != null) {
+			Account[] accounts = c.getAccounts();
+			System.out.println("\n=========List of client accounts ====");
+			for (int i = 0; i < accounts.length; i++) {
+				Account ac = accounts[i];
+				if (ac != null) {
+					System.out.println("account id: " + ac.getId() + ", balance: " + ac.getBalance());
+				}
+			}
+			System.out.println("=====================================\n");
+		} else {
+			System.out.println("client not found");
+		}
 
 	}
 
