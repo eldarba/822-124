@@ -108,4 +108,80 @@ public class Client {
 		System.out.println("account id " + accountId + " was not removed (not found)");
 	}
 
+	/**
+	 * implement to add the amount from clients balance according to the commission
+	 * (which is now zero). Use the commission data member in your calculation). log
+	 * the operation
+	 */
+	public void deposit(float depositAmount) {
+		float commission = depositAmount * this.commissionRate;
+		this.balance += depositAmount;
+		this.balance -= commission;
+		// LOG THE OPERATION ===
+		long timestamp = System.currentTimeMillis();
+		int clientId = this.id;
+		String description = "deposit";
+		float amount = depositAmount;
+		Log log = new Log(timestamp, clientId, description, amount);
+		this.logger.log(log);
+		// =====================
+	}
+
+	/**
+	 * implement to subtract the amount from clients balance according to the
+	 * commission (which is now zero). Use the commission data member in your
+	 * calculation). log the operation
+	 */
+	public void withdraw(float withdrawAmount) {
+		float commission = withdrawAmount * this.commissionRate;
+		this.balance -= withdrawAmount;
+		this.balance -= commission;
+		// LOG THE OPERATION ===
+		long timestamp = System.currentTimeMillis();
+		int clientId = this.id;
+		String description = "withdraw";
+		float amount = withdrawAmount;
+		Log log = new Log(timestamp, clientId, description, amount);
+		this.logger.log(log);
+		// =====================
+	}
+
+	/**
+	 * run over the accounts, calculate the amount to add according to the client
+	 * interest (meanwhile it is zero) and add it to each account balance. Use the
+	 * interest data member in your calculation. Log this operation.
+	 */
+	public void autoUpdateAccounts() {
+		for (int i = 0; i < accounts.length; i++) {
+			Account currAccount = accounts[i];
+			if (currAccount != null) {
+				float interest = currAccount.getBalance() * this.interestRate;
+				currAccount.setBalance(currAccount.getBalance() + interest);
+				// LOG THE OPERATION ===
+				long timestamp = System.currentTimeMillis();
+				int clientId = this.id;
+				String description = "autoUpdateAccount: " + currAccount.getId();
+				float amount = interest;
+				Log log = new Log(timestamp, clientId, description, amount);
+				this.logger.log(log);
+				// =====================
+			}
+		}
+	}
+
+	/**
+	 * getFortune() : float – returns the sum of client balance + total account
+	 * balance.
+	 */
+	public float getFortune() {
+		float fortune = this.balance;
+		for (int i = 0; i < accounts.length; i++) {
+			Account currAccount = accounts[i];
+			if (currAccount != null) {
+				fortune += currAccount.getBalance();
+			}
+		}
+		return fortune;
+	}
+
 }
