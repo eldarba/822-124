@@ -4,7 +4,7 @@ public class Bank {
 
 	private Client[] clients = new Client[100];
 	private Logger logger = new Logger(null);
-	private Object accountUptater; // not supported yet
+	Object accountUptater; // not supported yet
 	private float balance;
 
 	public float getBalance() {

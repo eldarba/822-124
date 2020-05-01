@@ -7,7 +7,7 @@ package bank.core;
 public class Logger {
 
 	/** the driver name will be used when a database is employed */
-	private String driverName;
+	String driverName;
 
 	public Logger(String driverName) {
 		super();
