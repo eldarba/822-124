@@ -11,6 +11,13 @@ public class BankView {
 		System.out.println("\t === Bank Menu ===========================");
 		System.out.println("\t Add Client ............. ac / 1");
 		System.out.println("\t Show All Clients ....... sac / 2");
+		// add the following operations (and more)
+		System.out.println("\t Add Client Account ..... aca / 3");
+		System.out.println("\t Client Deposit ......... cd / 4");
+		System.out.println("\t Client Withdraw ........ cw / 5");
+		System.out.println("\t Remove Client .......... cw / 6");
+		System.out.println("\t Remove Client Account .. rca / 7");
+		//
 		System.out.println("\t quit ................... q / 100");
 		System.out.println("\t =========================================");
 		System.out.print("\t Enter Your Choice: ");
