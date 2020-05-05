@@ -6,7 +6,9 @@ import a.animals.Bee;
 import a.animals.Cat;
 import a.animals.Kiwi;
 import a.animals.Owl;
+import b.interfaces.AdvancedFlyer;
 import b.interfaces.Flyer;
+import b.interfaces.Navigator;
 
 public class Test2 {
 
@@ -26,18 +28,32 @@ public class Test2 {
 		animals[9] = new Cat();
 
 		for (int i = 0; i < animals.length; i++) {
+			System.out.println("==================");
 			Animal currAnimal = animals[i];
 			if (currAnimal != null) {
 				currAnimal.speak();
+				if (currAnimal instanceof AdvancedFlyer) {
+					// if we are here the current animal can navigate
+					AdvancedFlyer advancedFlyer = (AdvancedFlyer) currAnimal;
+					advancedFlyer.takeOff();
+					advancedFlyer.fly();
+					advancedFlyer.navigate();
+					advancedFlyer.land();
+					continue;
+				}
 				if (currAnimal instanceof Flyer) {
 					// if we are here the current animal can fly
 					Flyer flyer = (Flyer) currAnimal;
 					flyer.fly();
 				}
+				if (currAnimal instanceof Navigator) {
+					// if we are here the current animal can navigate
+					Navigator navigator = (Navigator) currAnimal;
+					navigator.navigate();
+				}
 			} else {
 				System.out.println(animals[i]);
 			}
-			System.out.println("==================");
 		}
 
 	}
