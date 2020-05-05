@@ -17,7 +17,10 @@ public class Test1 {
 		Citizen pier = france.new Citizen("Pier");
 		Citizen clod = france.new Citizen("Clod");
 
-		System.out.println(dan.getName());
+		System.out.println(dan.getName() + " from " + dan.getStateName());
+		System.out.println(clod.getName() + " from " + clod.getStateName());
+		System.out.println(dana.getName() + " from " + dana.getStateName());
+		System.out.println(pier.getName() + " from " + pier.getStateName());
 
 	}
 

@@ -10,7 +10,7 @@ public class State {
 	}
 
 	public String getName() {
-		return name;
+		return State.this.name;
 	}
 
 	public void setName(String name) {
@@ -27,7 +27,12 @@ public class State {
 		}
 
 		public String getName() {
-			return name;
+//			return Citizen.this.name;
+			return this.name;
+		}
+
+		public String getStateName() {
+			return State.this.name;
 		}
 
 		public void setName(String name) {
