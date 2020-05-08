@@ -12,8 +12,13 @@ public class Demo1 {
 
 		System.out.println("trying to divide " + a + " by " + b);
 
-		result = c.divide(a, b);
-		System.out.println(result);
+		// handling #2 - try-catch (handler)
+		try {
+			result = c.divide(a, b);
+			System.out.println(result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		System.out.println("=== END ===");
 	}

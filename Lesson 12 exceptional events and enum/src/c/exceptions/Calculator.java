@@ -12,12 +12,15 @@ public class Calculator {
 	 * 
 	 * @throws RuntimeException in case of division by 0
 	 */
-	public int divide(int a, int b) {
+	public int divide(int a, int b) throws Exception {// handling #1 - throws declaration
 		if (b != 0) {
 			return a / b;
 		} else {
-			RuntimeException e = new RuntimeException("somethig is wrong. are you trying to divide by 0");
-			throw e;
+			// unchecked
+			RuntimeException e1 = new RuntimeException("somethig is wrong. are you trying to divide by 0");
+			// checked
+			Exception e2 = new RuntimeException("somethig is wrong. are you trying to divide by 0");
+			throw e2;
 		}
 	}
 
