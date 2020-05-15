@@ -24,7 +24,7 @@ public class Demo4RemoveError {
 			System.out.println(currElement);
 
 			if (currElement.length() > 3) {
-				listOfNames.remove(i); // logical index error
+				listOfNames.remove(i); // logical error
 			}
 		}
 

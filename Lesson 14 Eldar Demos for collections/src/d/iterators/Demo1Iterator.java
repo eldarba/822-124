@@ -5,6 +5,7 @@ import java.util.Iterator;
 public class Demo1Iterator {
 
 	public static void main(String[] args) {
+//		iterator is like pez (for kids);
 		Iterator<?> it = null;
 
 //		Returns true if the iteration has more elements
