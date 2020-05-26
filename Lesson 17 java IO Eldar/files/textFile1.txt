@@ -1,0 +1,4 @@
+This is my text file.
+The subject is Java IO
+the package is java.io
+אפשר לכתוב גם בעברית
