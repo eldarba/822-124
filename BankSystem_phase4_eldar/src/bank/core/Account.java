@@ -32,6 +32,7 @@ public class Account {
 		return result;
 	}
 
+	/** accounts equality is tested by account id */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
