@@ -50,9 +50,13 @@ public class BankController {
 		case "sac":
 		case "2":
 			System.out.println("doing command: show all clients");
-			Client[] clients = bankModel.getClientsArray();
-//			bankView.printAllClients(clients);
 			bankModel.printClientList();
+			break;
+		case "aca":
+		case "3":
+			System.out.println("doing command: add client account");
+			int clientId = bankView.askForClientId();
+			bankModel.getCllient(clientId);
 			break;
 		case "q":
 		case "100":

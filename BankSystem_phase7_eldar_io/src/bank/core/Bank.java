@@ -29,6 +29,7 @@ public class Bank {
 
 	private Bank() throws BankException {
 		load();
+		System.out.println("Bank CTOR: clients loaded from file");
 	}
 
 	public static Bank getInstance() throws BankException {
@@ -180,6 +181,21 @@ public class Bank {
 			System.out.println("no previuos clients in file");
 		} catch (IOException | ClassNotFoundException e) {
 			throw new BankLoadException("the bank couldnt load the stored clients", e);
+		}
+	}
+
+	/**
+	 * @param clientId
+	 * @return the client with the specified id.
+	 * @throws BankException - if the specified client not found.
+	 */
+	public Client getCllient(int clientId) throws BankException {
+		try {
+			Client client = new ClientRegular(clientId, null, 0);
+			client = clients.get(clients.indexOf(client));
+			return client;
+		} catch (IndexOutOfBoundsException e) {
+			throw new BankException("client with id: " + clientId + " not found", e);
 		}
 	}
 

@@ -20,6 +20,7 @@ public class BankView {
 		System.out.println("\t Client Withdraw ........ cw / 5");
 		System.out.println("\t Remove Client .......... cw / 6");
 		System.out.println("\t Remove Client Account .. rca / 7");
+		System.out.println("\t Store Clients .......... rca / 8");
 		//
 		System.out.println("\t quit ................... q / 100");
 		System.out.println("\t =========================================");
@@ -62,6 +63,20 @@ public class BankView {
 			System.out.println("client id: " + c.getId() + ", name: " + c.getName() + ", balance: " + c.getBalance());
 		}
 		System.out.println("=== =================== ==============");
+	}
+
+	public int askForClientId(Scanner sc) {
+
+		while (true) {
+			System.out.print("Please enter client id: ");
+			try {
+				int clientId = Integer.parseInt(sc.nextLine());
+				return clientId;
+			} catch (NumberFormatException e) {
+				System.out.println("Client id must be a number. Error: " + e.getMessage());
+			}
+
+		}
 	}
 
 }
