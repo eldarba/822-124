@@ -4,13 +4,15 @@ public class App {
 
 	public static void main(String[] args) {
 
+		System.out.println("starting");
+
 		Stack stack = new Stack();
 
-		int numberOfProducers = 2;
-		int producerIterrations = 1500;
+		int numberOfProducers = 3;
+		int producerIterrations = 4;
 
-		int numberOfConsumers = 1500;
-		int consumerIterrations = 2;
+		int numberOfConsumers = 2;
+		int consumerIterrations = 6;
 
 		if (numberOfProducers * producerIterrations != numberOfConsumers * consumerIterrations) {
 			throw new RuntimeException("too many producers / consumers!");
