@@ -82,9 +82,19 @@ public class BookDAODB implements BookDAO {
 	}
 
 	@Override
-	public Book delete(int bookId) {
-		// TODO Auto-generated method stub
-		return null;
+	public void delete(int bookId) {
+		try (Connection con = DriverManager.getConnection(url);) {
+			// Statement stmt = con.createStatement();
+			String sql = "delete from books where id = ?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			// set values for the ? parts of the sql
+			pstmt.setInt(1, bookId);
+			// execute the prepared statement now that it is initialized
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

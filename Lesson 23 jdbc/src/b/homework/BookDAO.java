@@ -8,6 +8,6 @@ public interface BookDAO {
 
 	void update(Book book);
 
-	Book delete(int bookId);
+	void delete(int bookId);
 
 }
