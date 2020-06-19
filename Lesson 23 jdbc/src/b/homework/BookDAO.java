@@ -1,13 +1,17 @@
 package b.homework;
 
+import java.util.List;
+
 public interface BookDAO {
 
-	void add(Book book);
+	void add(Book book) throws BookDaoException;
 
-	Book get(int bookId);
+	Book get(int bookId) throws BookDaoException;
 
-	void update(Book book);
+	List<Book> getAll() throws BookDaoException;
 
-	void delete(int bookId);
+	void update(Book book) throws BookDaoException;
+
+	void delete(int bookId) throws BookDaoException;
 
 }

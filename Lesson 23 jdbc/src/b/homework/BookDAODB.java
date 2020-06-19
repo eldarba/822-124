@@ -5,13 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookDAODB implements BookDAO {
 
 	private String url = "jdbc:derby://localhost:1527/db1";
 
 	@Override
-	public void add(Book book) {
+	public void add(Book book) throws BookDaoException {
 		try (Connection con = DriverManager.getConnection(url);) {
 			// Statement stmt = con.createStatement();
 			String sql = "insert into books values(?,?,?,?,?,?,?)";
@@ -27,13 +29,13 @@ public class BookDAODB implements BookDAO {
 			// execute the prepared statement now that it is initialized
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new BookDaoException("add book failed", e);
 		}
 
 	}
 
 	@Override
-	public Book get(int bookId) {
+	public Book get(int bookId) throws BookDaoException {
 		try (Connection con = DriverManager.getConnection(url);) {
 			String sql = "select * from books where id = ?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -54,13 +56,14 @@ public class BookDAODB implements BookDAO {
 				return book;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new BookDaoException("get book failed", e);
+
 		}
 		return null; // if book not found return null
 	}
 
 	@Override
-	public void update(Book book) {
+	public void update(Book book) throws BookDaoException {
 		try (Connection con = DriverManager.getConnection(url);) {
 			// Statement stmt = con.createStatement();
 			String sql = "update books set title=?, author=?, publication=?, price=?, quantity=?, rating=? where id = ?";
@@ -76,13 +79,13 @@ public class BookDAODB implements BookDAO {
 			// execute the prepared statement now that it is initialized
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new BookDaoException("update book failed", e);
 		}
 
 	}
 
 	@Override
-	public void delete(int bookId) {
+	public void delete(int bookId) throws BookDaoException {
 		try (Connection con = DriverManager.getConnection(url);) {
 			// Statement stmt = con.createStatement();
 			String sql = "delete from books where id = ?";
@@ -92,9 +95,36 @@ public class BookDAODB implements BookDAO {
 			// execute the prepared statement now that it is initialized
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new BookDaoException("delete book failed", e);
 		}
 
+	}
+
+	@Override
+	public List<Book> getAll() throws BookDaoException {
+		try (Connection con = DriverManager.getConnection(url);) {
+			String sql = "select * from books";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+
+			List<Book> list = new ArrayList<>();
+			while (rs.next()) {
+				// build the book based on the result set
+				Book book = new Book();
+				book.setId(rs.getInt("id"));
+				book.setAuthor(rs.getString("author"));
+				book.setPrice(rs.getDouble("price"));
+				book.setPublication(rs.getDate("publication"));
+				book.setQuantity(rs.getInt("quantity"));
+				book.setRating(rs.getDouble("rating"));
+				book.setTitle(rs.getString("title"));
+				// now that the book is set - return it
+				list.add(book);
+			}
+			return list;
+		} catch (SQLException e) {
+			throw new BookDaoException("get all books failed", e);
+		}
 	}
 
 }

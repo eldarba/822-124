@@ -8,20 +8,25 @@ public class App1 {
 
 	public static void main(String[] args) {
 
-		// create a book
-		Date publication = new Date(new GregorianCalendar(1980, Calendar.MAY, 25).getTimeInMillis());
-		Book book = new Book(101, "aaa", "eldar", publication, 50.25, 5, 10);
+		try {
 
-		// create a DAO
-		BookDAO dao = new BookDAODB();
+			// create a book
+			Date publication = new Date(new GregorianCalendar(1980, Calendar.MAY, 25).getTimeInMillis());
+			Book book = new Book(101, "aaa", "eldar", publication, 50.25, 5, 10);
 
-		// add book to the database
-		dao.add(book);
-		System.out.println("added " + book);
+			// create a DAO
+			BookDAO dao = new BookDAODB();
 
-		System.out.println("============");
-		System.out.println(dao.get(102));
+			// add book to the database
+			dao.add(book);
+			System.out.println("added " + book);
 
+			System.out.println("============");
+			System.out.println(dao.get(102));
+
+		} catch (BookDaoException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
