@@ -10,7 +10,8 @@ import java.util.List;
 
 public class BookDAODB implements BookDAO {
 
-	private String url = "jdbc:derby://localhost:1527/db1";
+//	private String url = "jdbc:derby://localhost:1527/db1";
+	private String url = "jdbc:sqlserver://localhost:1433;databaseName=db1;user=eldar1;password=pass1";
 
 	@Override
 	public void add(Book book) throws BookDaoException {
