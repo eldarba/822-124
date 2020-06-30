@@ -12,7 +12,8 @@ public class Demo2 {
 	public static void main(String[] args) {
 
 		String sql = "select id as book_number, title as כותר  from books";
-		String url = "jdbc:derby://localhost:1527/db1";
+//		String url = "jdbc:derby://localhost:1527/db1";
+		String url = "jdbc:sqlserver://localhost:1433;databaseName=db1;user=eldar1;password=pass1";
 
 		try (Connection con = DriverManager.getConnection(url);) {
 
@@ -26,7 +27,7 @@ public class Demo2 {
 			System.out.println("number of columns: " + columnCount);
 
 			for (int i = 1; i <= rsMeta.getColumnCount(); i++) {
-				System.out.println(rsMeta.getColumnName(i));
+				System.out.println(rsMeta.getColumnName(i) + " - " + rsMeta.getColumnLabel(i));
 			}
 
 		} catch (SQLException e) {

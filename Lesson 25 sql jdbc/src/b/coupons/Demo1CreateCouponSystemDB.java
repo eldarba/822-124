@@ -33,10 +33,14 @@ public class Demo1CreateCouponSystemDB {
 		// connect to the new database
 		connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=" + databaseNameCoupons
 				+ ";IntegratedSecurity=true";
-		sql = "create table companies(id int primary key,";
+
+		// create the companies table
+		sql = "create table companies(";
+		sql += "id int identity(1,1) primary key,";
 		sql += "name varchar(50),";
 		sql += "email varchar(50),";
-		sql += "passwoed varchar(50))";
+		sql += "passwoed varchar(50)";
+		sql += ")";
 		try (
 
 				Connection con = DriverManager.getConnection(connectionUrl);

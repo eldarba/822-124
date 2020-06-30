@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/eldar/servers/sql server/drivers/sqljdbc_8.2/enu/mssql-jdbc-8.2.2.jre11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jbt/Downloads/sql server/jdbc driver/sqljdbc_8.2/enu/mssql-jdbc-8.2.2.jre11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
