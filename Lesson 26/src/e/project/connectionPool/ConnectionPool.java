@@ -14,16 +14,15 @@ public class ConnectionPool {
 	private String dbUrl = "";
 
 	private ConnectionPool() throws SQLException {
-		if (instance == null) {
-			instance = new ConnectionPool();
-		}
-
 		for (int i = 0; i < SIZE; i++) {
 			connections.add(DriverManager.getConnection(dbUrl));
 		}
 	}
 
-	public static ConnectionPool getInstance() {
+	public static ConnectionPool getInstance() throws SQLException {
+		if (instance == null) {
+			instance = new ConnectionPool();
+		}
 		return instance;
 	}
 
