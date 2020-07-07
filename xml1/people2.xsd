@@ -13,15 +13,15 @@
 			</sequence>
 		</complexType>
 	</element>
-	
+
 	<element name="age">
-				<simpleType>
-					<restriction base="int">
-						<minInclusive value="18"></minInclusive>
-						<maxInclusive value="120"></maxInclusive>
-					</restriction>
-				</simpleType>
-			</element>
+		<simpleType>
+			<restriction base="int">
+				<minInclusive value="18"></minInclusive>
+				<maxInclusive value="120"></maxInclusive>
+			</restriction>
+		</simpleType>
+	</element>
 
 	<!-- method 2: use this as a type -->
 	<complexType name="person">
