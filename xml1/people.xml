@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- this is an xml document -->
+<!-- xml is in text format -->
+<!-- eXtensible Markup Language -->
+
+<people xmlns="http://www.eldar.org/people"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.eldar.org/people people.xsd">
+	<person serial="1">
+		<name>
+			<first>Avi</first>
+			<last>Levi</last>
+		</name>
+		<age>25</age>
+	</person>
+	<person serial="2"> 
+		<name>
+			<first>Danna</first>
+			<last>Kohen</last>
+		</name>
+		<age>28</age>
+	</person>
+</people>
