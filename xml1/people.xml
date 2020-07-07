@@ -6,13 +6,13 @@
 
 <people xmlns="http://www.eldar.org/people"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.eldar.org/people people.xsd">
+	xsi:schemaLocation="http://www.eldar.org/people people1.xsd">
 	<person serial="1">
 		<name>
 			<first>Avi</first>
 			<last>Levi</last>
 		</name>
-		<age>25</age>
+		<age>2500</age>
 	</person>
 	<person serial="2"> 
 		<name>
