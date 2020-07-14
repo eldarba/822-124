@@ -6,7 +6,13 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
-
-	<bean id="thePerson" class="a.types.Person"></bean>
+	<!-- your beans definitions here -->
+	<bean id="thePersonProto" class="a.types.person.Person" scope="prototype"></bean>
+	
+	<bean id="thePersonSingle" class="a.types.person.Person" scope="singleton">
+		<property name="id" value="101"></property>
+		<property name="name" value="Moshe"></property>
+		<property name="age" value="25"></property>
+	</bean>
 
 </beans>
