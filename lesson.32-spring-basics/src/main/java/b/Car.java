@@ -1,24 +1,27 @@
 package b;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component("theCar") // the qualifier 'theCar' is the bean name
 @Primary
+@Lazy
 public class Car {
 
 	private int id;
 	private int speed;
 	private Engine engine;
-	@Autowired
 	private Transmission transmission;
 
 	
 	@Autowired
-	public Car(Engine engine) {
+	public Car(Engine engine, Transmission transmission) {
 		super();
+		System.out.println("from Car Ctor");
 		this.engine = engine;
+		this.transmission = transmission;
 	}
 
 	public int getId() {

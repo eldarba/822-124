@@ -7,7 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import a.Person;
 import b.Car;
 
-public class ApringApp {
+public class SpringApp {
 
 	public static void main(String[] args) throws InterruptedException {
 		

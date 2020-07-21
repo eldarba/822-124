@@ -1,15 +1,12 @@
 package b;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
-
-@Component
-@Primary
 public class Transmission {
 
-	@Value("regular")
 	private String type;
+	
+	public Transmission() {
+		System.out.println("from Transmission CTOR");
+	}
 
 	public String getType() {
 		return type;

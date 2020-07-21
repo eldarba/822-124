@@ -3,6 +3,7 @@ package org.eldar.spring;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 import a.Person;
 import b.Car;
@@ -14,12 +15,12 @@ import b.Transmission;
 @ComponentScan(basePackages = "a, b")
 public class AppConfig {
 
-	@Bean
-	public Car speadingCar() {
-		Car car = new Car(new Engine());
-		car.setSpeed(150);
-		return car;
-	}
+//	@Bean
+//	public Car speadingCar() {
+//		Car car = new Car(new Engine());
+//		car.setSpeed(150);
+//		return car;
+//	}
 
 	@Bean
 	public int[] tenRandoms() {
@@ -47,6 +48,7 @@ public class AppConfig {
 	}
 	
 	@Bean
+	@Lazy
 	public Transmission autoTransmission() {
 		Transmission t = new Transmission();
 		t.setType("auto");
