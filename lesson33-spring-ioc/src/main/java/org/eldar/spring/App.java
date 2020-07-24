@@ -9,12 +9,12 @@ public class App {
 		try(AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class)){
 			Person p1 = ctx.getBean("person", Person.class);
 			Person p2 = ctx.getBean("thePerson", Person.class);
+			Person p3 = ctx.getBean("theOtherPerson", Person.class);
 			
-			p1.setId(101);
-			p2.setId(102);
 			
 			System.out.println(p1);
 			System.out.println(p2);
+			System.out.println(p3);
 		}
 		
 
