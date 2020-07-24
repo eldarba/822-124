@@ -13,6 +13,9 @@ import org.springframework.context.annotation.Scope;
 // tell spring where is the properties file
 @PropertySource("classpath:pplication.properties")
 public class AppConfig {
+	
+	private static int carId = 1;
+	private static int engineId = 101;
 
 	@Bean
 	@Scope(BeanDefinition.SCOPE_PROTOTYPE)
@@ -26,6 +29,18 @@ public class AppConfig {
 	public Person theOtherPerson() {
 		Person p = new Person(222, "BBB", 100);
 		return p;
+	}
+	
+	@Bean
+	@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+	public int carId(){
+		return carId++;
+	}
+	
+	@Bean
+	@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+	public int engineId(){
+		return engineId++;
 	}
 
 }
