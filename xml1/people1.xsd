@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.eldar.org/people"
+	xmlns:tns="http://www.eldar.org/people" elementFormDefault="qualified">
+
+	<element name="people">
+		<complexType>
+			<sequence>
+				<element name="person" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="name">
+								<complexType>
+									<sequence>
+										<element name="first" type="string"></element>
+										<element name="last" type="string"></element>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="age" type="int"></element>
+						</sequence>
+						<attribute name="serial" type="int"></attribute>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+</schema>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.eldar.org/people"
+	xmlns:tns="http://www.eldar.org/people" elementFormDefault="qualified">
+
+	<!-- method 1: use this element using reference -->
+	<element name="name">
+		<complexType>
+			<sequence>
+				<element name="first" type="string"></element>
+				<element name="last" type="string"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="age">
+		<simpleType>
+			<restriction base="int">
+				<minInclusive value="18"></minInclusive>
+				<maxInclusive value="120"></maxInclusive>
+			</restriction>
+		</simpleType>
+	</element>
+
+	<!-- method 2: use this as a type -->
+	<complexType name="person">
+		<sequence>
+			<element ref="tns:name"></element>
+			<element ref="tns:age"></element>
+		</sequence>
+		<attribute name="serial" type="int"></attribute>
+	</complexType>
+
+	<element name="people">
+		<complexType>
+			<sequence>
+				<element name="person" type="tns:person" minOccurs="0"
+					maxOccurs="unbounded"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+</schema>
