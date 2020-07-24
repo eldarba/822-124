@@ -26,10 +26,14 @@ public class BankController {
 
 	public static void main(String[] args) {
 		BankController bankController = new BankController();
-		bankController.start();
+		try {
+			bankController.start();
+		} catch (BankException e) {
+			e.printStackTrace();
+		}
 	}
 
-	private void start() {
+	private void start() throws BankException {
 		while (!quit) {
 			bankView.showMenu();
 			String command = sc.nextLine();
@@ -38,7 +42,7 @@ public class BankController {
 		System.out.println("Bank System is Down");
 	}
 
-	private void doCommand(String command) {
+	private void doCommand(String command) throws BankException {
 		System.out.println();
 		switch (command) {
 		case "ac":
@@ -55,7 +59,7 @@ public class BankController {
 		case "aca":
 		case "3":
 			System.out.println("doing command: add client account");
-			int clientId = bankView.askForClientId();
+			int clientId = bankView.askForClientId(sc);
 			bankModel.getCllient(clientId);
 			break;
 		case "q":
