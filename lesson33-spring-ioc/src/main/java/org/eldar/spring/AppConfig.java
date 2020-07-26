@@ -35,6 +35,13 @@ public class AppConfig {
 	}
 
 	@Bean
+	@Scope(BeanDefinition.SCOPE_SINGLETON)
+	public Car raceCar() {
+		Car car = new Car("Red", new Engine(5000, "V8"), new Transmission(8, Transmission.Type.MANUAL));
+		return car;
+	}
+
+	@Bean
 	@Scope(BeanDefinition.SCOPE_PROTOTYPE)
 	public int carId() {
 		return carId++;
@@ -44,13 +51,6 @@ public class AppConfig {
 	@Scope(BeanDefinition.SCOPE_PROTOTYPE)
 	public int engineId() {
 		return engineId++;
-	}
-
-	@Bean
-	@Scope(BeanDefinition.SCOPE_SINGLETON)
-	public Car raceCar() {
-		Car car = new Car("Red", new Engine(5000, "V8"), new Transmission(8, Transmission.Type.MANUAL));
-		return car;
 	}
 
 }
