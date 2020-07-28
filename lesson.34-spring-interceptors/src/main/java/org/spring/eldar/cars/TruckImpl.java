@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString @Getter @Setter
-public class CarImpl implements Car {
+public class TruckImpl implements Truck {
 	
 	private int number;
 
@@ -16,13 +16,13 @@ public class CarImpl implements Car {
 
 	@Override
 	public void start() {
-		System.out.println("car start engine");
+		System.out.println("track start engine");
 
 	}
 
 	@Override
 	public void stop() {
-		System.out.println("car stop engine");
+		System.out.println("track stop engine");
 
 	}
 

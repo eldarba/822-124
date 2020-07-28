@@ -8,6 +8,7 @@ public class ParkingLot {
 
 	/** add a vehicle to the parking lot */
 	public void addVehicle(Vehicle vehicle) {
+		vehicle.stop();
 		vehicles.add(vehicle);
 	}
 
@@ -19,6 +20,7 @@ public class ParkingLot {
 		for (Vehicle vehicle : vehicles) {
 			if (vehicle.getNumber() == number) {
 				vehicles.remove(vehicle);
+				vehicle.start();
 				return vehicle;
 			}
 		}
