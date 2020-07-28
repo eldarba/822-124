@@ -5,6 +5,8 @@ import java.util.List;
 public class ParkingLot {
 
 	private List<Vehicle> vehicles;
+	
+
 
 	/** add a vehicle to the parking lot */
 	public void addVehicle(Vehicle vehicle) {
@@ -27,4 +29,11 @@ public class ParkingLot {
 		return null;
 	}
 
+	public List<Vehicle> getVehicles() {
+		return vehicles;
+	}
+
+	public void setVehicles(List<Vehicle> vehicles) {
+		this.vehicles = vehicles;
+	}
 }
