@@ -1,12 +1,22 @@
 package org.spring.eldar.cars;
 
 import org.spring.eldar.AppConfig;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class TestSpring {
 	
 	public static void main(String[] args) {
 		try(AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class)){
+			
+			ApplicationContext c;
+			BeanFactory f;
+			
+			ctx.getBeanFactory();
+			
+//			System.out.println(lot1); // the lot1 reference belongs to the container
+			System.out.println(ctx.getBean("lot1"));
 			
 
 			

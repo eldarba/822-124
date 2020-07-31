@@ -2,6 +2,7 @@ package org.eldar.spring.cars;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,7 +18,7 @@ import lombok.ToString;
 @ToString
 public class Car {
 
-	@Autowired
+	@Resource
 	@Qualifier("carId")
 	private int id;
 	private String color;

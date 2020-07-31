@@ -41,7 +41,7 @@ public class AppConfig {
 		return car;
 	}
 
-	@Bean
+	@Bean("carId")
 	@Scope(BeanDefinition.SCOPE_PROTOTYPE)
 	public int carId() {
 		return carId++;

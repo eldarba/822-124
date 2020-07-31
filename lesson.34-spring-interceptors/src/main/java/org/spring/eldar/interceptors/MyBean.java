@@ -9,20 +9,31 @@ import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MyBean implements 
 
-BeanNameAware, BeanFactoryAware, // awareness interfaces
+BeanNameAware, BeanFactoryAware, ApplicationContextAware, // awareness interfaces
 
 InitializingBean, DisposableBean // init destroy
+
+
 
 {
 	
 	public String beanName;
 	public BeanFactory factory;
+	public ApplicationContext context;
 
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		this.context = applicationContext;
+		
+	}
+	
 	@Override
 	public void setBeanName(String name) {
 		beanName = name;
@@ -56,5 +67,6 @@ InitializingBean, DisposableBean // init destroy
 	public void destroy() throws Exception {
 		System.out.println("from DisposableBean.destroy");
 	}
+
 
 }
