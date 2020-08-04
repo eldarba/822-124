@@ -12,8 +12,13 @@ public class App {
 
 			MyTargetObject tar = ctx.getBean(MyTargetObject.class);
 //			MyTargetObject tar = new MyTargetObject();
-			int sum = tar.sum(5, 3);
-			System.out.println("APP: " + sum);
+			try {
+				int sum = tar.sum(5, 3);
+				System.out.println("APP: " + sum);
+
+			} catch (RuntimeException e) {
+				e.printStackTrace(System.out);
+			}
 
 			System.out.println("==========");
 			tar.sayHi();
