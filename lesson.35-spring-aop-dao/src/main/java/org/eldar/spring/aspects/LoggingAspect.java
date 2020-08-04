@@ -14,7 +14,7 @@ public class LoggingAspect {
 	// an advice is a method to be run when a joinpont is executed
 	@Before("execution(public void add*())") // pointcut expression language
 	public void beforeAddAdvice() {
-		System.out.println("===>>> LogginAspect: ");
+		System.out.println("===>>> LoggingAspect: ");
 	}
 
 }
