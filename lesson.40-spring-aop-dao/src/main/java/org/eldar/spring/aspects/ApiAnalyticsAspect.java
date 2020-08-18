@@ -8,11 +8,20 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-@Order(1)
-public class SmsAspect {
+@Order(2)
+public class ApiAnalyticsAspect {
+
+	private int counter;
 
 	@Before("MyPointcuts.allDaoPackageExcludeGetSet()")
-	public void smsAdvice(JoinPoint jp) {
-		System.out.println("===>>> sms advice before method: " + jp.getSignature());
+	public void apiAnalyticsAdvice(JoinPoint jp) {
+		counter++;
+		System.out.println(
+				"===>>> API Analytics advice before method: " + jp.getSignature() + " interception #: " + counter);
 	}
+
+	public int getCounter() {
+		return counter;
+	}
+
 }

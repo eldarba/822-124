@@ -1,6 +1,7 @@
 package org.eldar.spring.aopdemo;
 
 import org.eldar.spring.AppConfig;
+import org.eldar.spring.aspects.ApiAnalyticsAspect;
 import org.eldar.spring.beans.Company;
 import org.eldar.spring.dao.CompanyDao;
 import org.eldar.spring.dao.CouponDao;
@@ -19,10 +20,14 @@ public class MainDemoApp {
 			System.out.println(c);
 			c.setId(101);
 
+			// business methods
 			companyDao.addCompany(c, true);
 			companyDao.sayHello();
 			couponDao.addCoupon();
 			couponDao.doWork();
+
+			ApiAnalyticsAspect apiAnalytics = ctx.getBean(ApiAnalyticsAspect.class);
+			System.out.println("total interceptions: " + apiAnalytics.getCounter());
 		}
 
 	}

@@ -12,6 +12,12 @@ public class MyPointcuts {
 
 	}
 
+	// pointcut declarations are done in special declaration methods
+	@Pointcut("execution(* org.eldar.spring.dao.*.*(..))")
+	public void allDaoPackage() {
+
+	}
+
 	@Pointcut("execution(* get*(..))")
 	public void allGetters() {
 
@@ -24,6 +30,11 @@ public class MyPointcuts {
 
 	@Pointcut("allBeansPackage() && !(allGetters() || allSetters())")
 	public void allBeansPackageExcludeGetSet() {
+
+	}
+
+	@Pointcut("allDaoPackage() && !(allGetters() || allSetters())")
+	public void allDaoPackageExcludeGetSet() {
 
 	}
 
