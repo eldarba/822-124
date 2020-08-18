@@ -1,5 +1,6 @@
 package org.eldar.spring.aspects;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -20,9 +21,9 @@ public class LoggingAspect {
 		System.out.println("===>>> LoggingAspect: ");
 	}
 
-	@Before("execution(* org.eldar.spring.beans.*.*(..))")
-	public void beforeBeansPackageAdvice() {
-		System.out.println("===>>> LoggingAspect: you called a method from beans package");
+	@Before("MyPointcuts.allBeansPackage()")
+	public void beforeBeansPackageAdvice(JoinPoint jp) {
+		System.out.println("===>>> LoggingAspect: you called a method from beans package: " + jp.getSignature());
 	}
 
 }
