@@ -1,6 +1,7 @@
 package org.eldar.spring.aopdemo;
 
 import org.eldar.spring.AppConfig;
+import org.eldar.spring.beans.Company;
 import org.eldar.spring.dao.CompanyDao;
 import org.eldar.spring.dao.CouponDao;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,7 +15,11 @@ public class MainDemoApp {
 			CompanyDao companyDao = ctx.getBean(CompanyDao.class);
 			CouponDao couponDao = ctx.getBean(CouponDao.class);
 
-			companyDao.addCompany();
+			Company c = ctx.getBean(Company.class);
+			System.out.println(c);
+			c.setId(101);
+
+			companyDao.addCompany(c, true);
 			companyDao.sayHello();
 			couponDao.addCoupon();
 			couponDao.doWork();
