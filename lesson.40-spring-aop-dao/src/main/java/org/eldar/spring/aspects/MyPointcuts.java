@@ -2,6 +2,8 @@ package org.eldar.spring.aspects;
 
 import org.aspectj.lang.annotation.Pointcut;
 
+//import org.aspectj.lang.annotation.Pointcut;
+
 public class MyPointcuts {
 
 	// pointcut declarations are done in special declaration methods
