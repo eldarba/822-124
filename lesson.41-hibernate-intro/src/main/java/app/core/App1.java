@@ -11,7 +11,7 @@ public class App1 {
 	public static void main(String[] args) {
 
 		// this object represents the configuration info (xml file) as an object
-		Configuration cfg = new Configuration().configure().addAnnotatedClass(Student.class);
+		Configuration cfg = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student.class);
 
 		// get a session factory
 
