@@ -5,7 +5,7 @@
 	<session-factory>
 		<!-- JDBC Database connection settings -->
 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/db3?useSSL=false&amp;serverTimezone=UTC</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/db3?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true</property>
 		<!-- -->
 		<property name="connection.username">eldar1</property>
 		<property name="connection.password">pass1</property>
