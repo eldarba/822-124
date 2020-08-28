@@ -5,7 +5,7 @@
 	<session-factory>
 		<!-- JDBC Database connection settings -->
 		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/db3?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/hibernate_flow1?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true</property>
 		<!-- -->
 		<property name="connection.username">eldar1</property>
 		<property name="connection.password">pass1</property>
@@ -21,6 +21,7 @@
 		<property name="current_session_context_class">thread</property>
 		<!-- hbm2ddl options: validate | update | create | create-drop -->
 		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 	</session-factory>
 </hibernate-configuration>
 
