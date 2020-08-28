@@ -7,7 +7,7 @@ import org.hibernate.cfg.Configuration;
 import app.core.entities.Company;
 import app.core.entities.CompanyAddress;
 
-public class App01 {
+public class App4 {
 
 	public static void main(String[] args) {
 
@@ -22,15 +22,10 @@ public class App01 {
 				session.beginTransaction();
 
 				// =======================
-				CompanyAddress address = new CompanyAddress("Tel Aviv", "Israel");
-				Company company = new Company("Yosi and Sons", "yosi@mail");
-				Company company2 = new Company("Tadiran", "tad@mail");
-				company.setAddress(address);
-
-				session.save(company);
-				session.save(company2);
-				System.out.println("the company: " + company);
-				System.out.println("the address" + company.getAddress());
+				int id = 1;
+				CompanyAddress address = session.get(CompanyAddress.class, id);
+				session.delete(address);
+				System.out.println("deleted " + address);
 
 				// =======================
 
