@@ -4,15 +4,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import app.core.entities.Company;
-import app.core.entities.CompanyAddress;
+import app.core.entities.Coupon;
+import app.core.entities.Review;
 
-public class App6 {
+public class App01 {
 
 	public static void main(String[] args) {
 
-		Configuration config = new Configuration().addAnnotatedClass(Company.class)
-				.addAnnotatedClass(CompanyAddress.class).configure();
+		Configuration config = new Configuration().addAnnotatedClass(Coupon.class).addAnnotatedClass(Review.class)
+				.configure();
 
 		try (SessionFactory factory = config.buildSessionFactory();) {
 
@@ -22,15 +22,19 @@ public class App6 {
 				session.beginTransaction();
 
 				// =======================
-				Company c1 = new Company("aaa", "aaaMail");
-				Company c2 = new Company("bbb", "aaaMail");
-				Company c3 = new Company("ccc", "aaaMail");
-				c1.setAddress(new CompanyAddress("aaa", "aaa"));
-				c2.setAddress(new CompanyAddress("bbb", "aaa"));
-				c3.setAddress(new CompanyAddress("ccc", "aaa"));
-				session.save(c1);
+				Coupon c1 = new Coupon("aaa");
+				Coupon c2 = new Coupon("bbb");
+
+				c1.addReview(new Review("very good"));
+				c1.addReview(new Review("nice"));
+				c1.addReview(new Review("excelent"));
+
+				c2.addReview(new Review("Tov"));
+				c2.addReview(new Review("Tov Meod"));
+
+				int id = (int) session.save(c1);
 				session.save(c2);
-				session.save(c3);
+				System.out.println("coupon id: " + id);
 				// =======================
 
 				session.getTransaction().commit();

@@ -6,13 +6,15 @@ import org.hibernate.cfg.Configuration;
 
 import app.core.entities.Coupon;
 import app.core.entities.Review;
+import app.core.entities.Student;
+import app.core.entities.University;
 
-public class App01 {
+public class App2 {
 
 	public static void main(String[] args) {
 
 		Configuration config = new Configuration().addAnnotatedClass(Coupon.class).addAnnotatedClass(Review.class)
-				.configure();
+				.configure().addAnnotatedClass(Student.class).addAnnotatedClass(University.class);
 
 		try (SessionFactory factory = config.buildSessionFactory();) {
 
@@ -22,19 +24,29 @@ public class App01 {
 				session.beginTransaction();
 
 				// =======================
-				Coupon c1 = new Coupon("aaa");
-				Coupon c2 = new Coupon("bbb");
+				University u1 = new University("Ben Gurion", "Israel");
+				University u2 = new University("Bar Illan", "Israel");
 
-				c1.addReview(new Review("very good"));
-				c1.addReview(new Review("nice"));
-				c1.addReview(new Review("excelent"));
+				session.save(u1);
+				session.save(u2);
 
-				c2.addReview(new Review("Tov"));
-				c2.addReview(new Review("Tov Meod"));
+				Student s1 = new Student("dan");
+				Student s2 = new Student("ran");
+				Student s3 = new Student("ben");
+				Student s4 = new Student("adva");
+				Student s5 = new Student("vered");
 
-				int id = (int) session.save(c1);
-				session.save(c2);
-				System.out.println("coupon id: " + id);
+				s1.setUniversity(u1);
+				s2.setUniversity(u2);
+				s3.setUniversity(u2);
+				s4.setUniversity(u1);
+				s5.setUniversity(u2);
+
+				session.save(s1);
+				session.save(s2);
+				session.save(s3);
+				session.save(s4);
+				session.save(s5);
 				// =======================
 
 				session.getTransaction().commit();
