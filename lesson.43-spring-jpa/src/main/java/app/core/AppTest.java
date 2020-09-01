@@ -1,10 +1,11 @@
 package app.core;
 
+import java.util.List;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import app.core.dao.StudentDao;
 import app.core.entities.Student;
-import app.core.entities.Student.Gender;
 
 public class AppTest {
 
@@ -13,16 +14,16 @@ public class AppTest {
 
 			StudentDao studentDao = ctx.getBean(StudentDao.class);
 
-			{// add students
-				Student st1 = new Student("aaa", "aaaMail", Gender.M);
-				Student st2 = new Student("bbb", "bbbMail", Gender.F);
-				Student st3 = new Student("ccc", "cccMail", Gender.F);
-				int id = studentDao.addStudent(st1);
-				studentDao.addStudent(st2);
-				studentDao.addStudent(st3);
-
-				System.out.println("id: " + id);
-			}
+//			{// add students
+//				Student st1 = new Student("aaa", "aaaMail", Gender.M);
+//				Student st2 = new Student("bbb", "bbbMail", Gender.F);
+//				Student st3 = new Student("ccc", "cccMail", Gender.F);
+//				int id = studentDao.addStudent(st1);
+//				studentDao.addStudent(st2);
+//				studentDao.addStudent(st3);
+//
+//				System.out.println("id: " + id);
+//			}
 
 //			{ // get student
 //				int id1 = 3;
@@ -33,14 +34,14 @@ public class AppTest {
 //				System.out.println(st2);
 //			}
 
-//			{ // get all students
-//				System.out.println("----------------");
-//				List<Student> students = studentDao.getAllStudents();
-//				for (Student student : students) {
-//					System.out.println(student);
-//				}
-//				System.out.println("----------------");
-//			}
+			{ // get all students
+				System.out.println("----------------");
+				List<Student> students = studentDao.getAllStudents();
+				for (Student student : students) {
+					System.out.println(student);
+				}
+				System.out.println("----------------");
+			}
 
 //			{ // update student
 //				int id1 = 9;
