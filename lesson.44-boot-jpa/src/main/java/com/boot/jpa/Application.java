@@ -5,9 +5,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Scope;
+
+import com.boot.jpa.dao.StudentDao;
+import com.boot.jpa.entities.Student;
+import com.boot.jpa.entities.Student.Gender;
 
 @SpringBootApplication
 public class Application implements ApplicationContextAware {
@@ -16,33 +17,14 @@ public class Application implements ApplicationContextAware {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
-		System.out.println(ctx);
-
-		Integer a = ctx.getBean(Integer.class);
-		Object b = ctx.getBean("number");
-		Integer c = ctx.getBean("number", Integer.class);
-
-		System.out.println(ctx.getBean(Integer.class));
-		System.out.println(ctx.getBean("number"));
-		System.out.println(ctx.getBean(Integer.class));
+		StudentDao dao = ctx.getBean(StudentDao.class);
+		dao.addStudent(new Student("aaa", "aaaMail", Gender.M));
+		dao.addStudent(new Student("bbb", "bbbMail", Gender.F));
 	}
 
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		ctx = applicationContext;
-	}
-
-	@Bean
-	@Primary
-	@Scope("prototype")
-	public Integer number() {
-		return (int) (Math.random() * 101);
-	}
-
-	@Bean
-	@Scope("prototype")
-	public Integer number2() {
-		return (int) (Math.random() * 101);
 	}
 
 }
