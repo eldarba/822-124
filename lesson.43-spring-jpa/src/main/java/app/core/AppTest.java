@@ -10,9 +10,12 @@ import app.core.entities.Student;
 public class AppTest {
 
 	public static void main(String[] args) {
+
 		try (AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class)) {
 
 			StudentDao studentDao = ctx.getBean(StudentDao.class);
+			System.out.println(studentDao.toString());
+			System.out.println(studentDao.getClass());
 
 //			{// add students
 //				Student st1 = new Student("aaa", "aaaMail", Gender.M);

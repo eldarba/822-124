@@ -1,4 +1,4 @@
-package app.core.dao;
+package com.boot.jpa.dao;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import app.core.entities.Student;
+import com.boot.jpa.entities.Student;
 
 @Repository
 @Transactional
