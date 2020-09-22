@@ -50,5 +50,17 @@ public class CalculatorProxy implements core.calculator.Calculator {
     return calculator.sum(arg0, arg1);
   }
   
+  public java.lang.String greet(core.calculator.Person arg0) throws java.rmi.RemoteException{
+    if (calculator == null)
+      _initCalculatorProxy();
+    return calculator.greet(arg0);
+  }
+  
+  public core.calculator.Person getPerson(int arg0, java.lang.String arg1, int arg2) throws java.rmi.RemoteException{
+    if (calculator == null)
+      _initCalculatorProxy();
+    return calculator.getPerson(arg0, arg1, arg2);
+  }
+  
   
 }

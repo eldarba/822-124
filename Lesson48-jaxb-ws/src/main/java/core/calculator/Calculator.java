@@ -14,4 +14,13 @@ public class Calculator {
 		return a + b;
 	}
 
+	public Person getPerson(int id, String name, int age) {
+		return new Person(id, name, age);
+	}
+
+	public String greet(Person person) {
+		String str = "Hello " + person.getName();
+		return str;
+	}
+
 }
