@@ -3,7 +3,9 @@ package app.core.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -59,7 +61,27 @@ public class EmployeeController {
 		throw new EmployeeNotFoundException(id);
 	}
 
-	@PostMapping("/employees")
+	@GetMapping("/employees/ent/{id}")
+	public ResponseEntity<Employee> getOneEmployee2(@PathVariable Long id) {
+		Optional<Employee> opt = repo.findById(id);
+		if (opt.isPresent()) {
+			return new ResponseEntity<Employee>(opt.get(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@GetMapping("/employees/ent/err/{id}")
+	public ResponseEntity<?> getOneEmployee3(@PathVariable Long id) {
+		Optional<Employee> opt = repo.findById(id);
+		if (opt.isPresent()) {
+			return new ResponseEntity<Employee>(opt.get(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<String>("employee not found: " + id, HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@PostMapping(path = "/employees", consumes = { xml, json })
 	public Employee addEmployee(@RequestBody Employee employee) {
 		return repo.save(employee);
 	}
