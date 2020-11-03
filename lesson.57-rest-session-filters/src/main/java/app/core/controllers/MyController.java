@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import app.core.models.Person;
 
@@ -33,13 +34,21 @@ public class MyController {
 
 	@GetMapping("/person/{id}")
 	public ResponseEntity<?> getPerson(@PathVariable int id) {
+		try {
+			if (Math.random() < 0.5) {
+				throw new RuntimeException("get person error - test");
+			} else {
+				Person person = personsMap.get(id);
 
-		Person p = personsMap.get(id);
-
-		if (p != null) {
-			return ResponseEntity.ok(p);
-		} else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("id " + id + " not found");
+				if (person != null) {
+					return ResponseEntity.ok(person);
+				} else {
+					return ResponseEntity.status(HttpStatus.NOT_FOUND).body("id " + id + " not found");
+				}
+			}
+		} catch (Exception e) {
+			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "get person failed - " + e.getMessage(),
+					e);
 		}
 
 	}
