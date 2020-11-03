@@ -2,8 +2,8 @@ package d.recursion;
 
 public class Demo1 {
 
-	public static void a() {
-		a();
+	public static void endless() {
+		endless(); // will cause stack overflow
 	}
 
 	public static void printOneToVal(int val) {
@@ -27,16 +27,16 @@ public class Demo1 {
 
 		if (a == b) {
 			System.out.println(a);
-//			return;
+//			return; // returns here anyway
 		} else {
 			System.out.println(a);
 			printAtoB(a + 1, b);
-//			return;
+//			return; // returns here anyway
 		}
 	}
 
 	public static void main(String[] args) {
-		// a(); // stack overflow
+		// endless(); // stack overflow
 //		printOneToVal(5);
 		printAtoB(5, 11);
 	}

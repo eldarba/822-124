@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import app.core.entities.Employee;
 import app.core.exceptions.EmployeeNotFoundException;
 import app.core.repositories.EmployeeRepository;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/lesson50/api")
 public class EmployeeController {
@@ -95,8 +97,10 @@ public class EmployeeController {
 	}
 
 	@DeleteMapping("/employees")
-	public void delete(@RequestParam Long id) {
+	public Employee delete(@RequestParam Long id) {
+		Employee e = getOneEmployee(id);
 		repo.deleteById(id);
+		return e;
 	}
 
 }
