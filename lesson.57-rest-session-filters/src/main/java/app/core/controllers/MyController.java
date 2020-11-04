@@ -49,16 +49,22 @@ public class MyController {
 	}
 
 	@PostMapping("/person")
-	public ResponseEntity<String> addPerson(@RequestBody Person person) {
-		personsMap.put(person.getId(), person);
-		return ResponseEntity.ok("person added");
+	public ResponseEntity<String> addPerson(@RequestHeader String token, @RequestBody Person person) {
+		Session session = sessionContext.getSession(token);
+		if (session != null) {
+			personsMap.put(person.getId(), person);
+			return ResponseEntity.ok("person added");
+		} else {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You are not logged in");
+		}
 	}
 
 	@GetMapping("/person/{id}")
-	public ResponseEntity<?> getPerson(@PathVariable int id) {
+	public ResponseEntity<?> getPerson(@RequestHeader String token, @PathVariable int id) {
+		Session session = sessionContext.getSession(token);
 		try {
-			if (Math.random() < 0.5) {
-				throw new RuntimeException("get person error - test");
+			if (session == null) {
+				throw new RuntimeException("get person error - NO SESSION");
 			} else {
 				Person person = personsMap.get(id);
 
