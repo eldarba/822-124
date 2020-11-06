@@ -2,17 +2,22 @@ package app.core.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -27,60 +32,64 @@ public class MyController {
 
 	private Map<Integer, Person> personsMap = new HashMap<>();
 	@Autowired
-	SessionContext sessionContext;
+	private SessionContext sessionContext;
 
-	@PostMapping("/login/{userName}")
-	public String login(@PathVariable String userName) {
-		Session session = sessionContext.createSession();
-		session.setAttribute("userName", userName);
-		return session.token;
+	@Autowired
+	private ApplicationContext ctx;
+
+	private void closeContext(long seconds) {
+		try {
+			Thread.sleep(TimeUnit.SECONDS.toMillis(seconds));
+			((ConfigurableApplicationContext) ctx).close();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@PutMapping
+	public ResponseEntity<String> kill(@RequestHeader String token, @RequestParam long seconds) {
+		new Thread() {
+
+			@Override
+			public void run() {
+				closeContext(seconds);
+			}
+		}.start();
+
+		return ResponseEntity.status(HttpStatus.OK).body("the application will go down in " + seconds + " seconds");
 	}
 
 	@GetMapping("/greet2")
 	public String greet2(@RequestHeader String token) {
 		Session session = sessionContext.getSession(token);
-		if (session != null) {
-			return "Hello " + session.getAttribute("userName");
-		}
-		return "Hello unlogged User";
+		return "Hello " + session.getAttribute("userName");
 	}
 
 	@GetMapping("/greet")
-	public String greet() {
+	public String greet(@RequestHeader String token) {
 		return "Hello User";
 	}
 
 	@PostMapping("/person")
 	public ResponseEntity<String> addPerson(@RequestHeader String token, @RequestBody Person person) {
-		Session session = sessionContext.getSession(token);
-		if (session != null) {
-			personsMap.put(person.getId(), person);
-			return ResponseEntity.ok("person added");
-		} else {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("You are not logged in");
-		}
+		personsMap.put(person.getId(), person);
+		return ResponseEntity.ok("person added");
 	}
 
 	@GetMapping("/person/{id}")
 	public ResponseEntity<?> getPerson(@RequestHeader String token, @PathVariable int id) {
-		Session session = sessionContext.getSession(token);
 		try {
-			if (session == null) {
-				throw new RuntimeException("get person error - NO SESSION");
-			} else {
-				Person person = personsMap.get(id);
+			Person person = personsMap.get(id);
 
-				if (person != null) {
-					return ResponseEntity.ok(person);
-				} else {
-					return ResponseEntity.status(HttpStatus.NOT_FOUND).body("id " + id + " not found");
-				}
+			if (person != null) {
+				return ResponseEntity.ok(person);
+			} else {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("id " + id + " not found");
 			}
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "get person failed - " + e.getMessage(),
 					e);
 		}
-
 	}
 
 }

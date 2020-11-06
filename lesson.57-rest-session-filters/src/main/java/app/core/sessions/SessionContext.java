@@ -35,13 +35,13 @@ public class SessionContext {
 			@Override
 			public void run() {
 				System.out.println("removing expired sessions");
-				System.out.println(sessionsMap.keySet());
+				System.out.println(sessionsMap.keySet().toString());
 				for (Session session : sessionsMap.values()) {
 					if (isSessionExpired(session)) {
 						invalidate(session);
 					}
 				}
-				System.out.println(sessionsMap.keySet());
+				System.out.println(sessionsMap.keySet().toString());
 				System.out.println("=================");
 
 			}

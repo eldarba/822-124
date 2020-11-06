@@ -2,8 +2,11 @@ package app.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
+import app.core.filters.LoginFilter;
+import app.core.sessions.SessionContext;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -16,6 +19,15 @@ public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+	}
+
+	@Bean
+	public FilterRegistrationBean<LoginFilter> filterRegistrationBean(SessionContext sessionContext) {
+		FilterRegistrationBean<LoginFilter> filterRegistrationBean = new FilterRegistrationBean<>();
+		LoginFilter loginFilter = new LoginFilter(sessionContext);
+		filterRegistrationBean.setFilter(loginFilter);
+		filterRegistrationBean.addUrlPatterns("/api/*");
+		return filterRegistrationBean;
 	}
 
 	@Bean
