@@ -1,6 +1,7 @@
 package app.core.filters;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -29,22 +30,34 @@ public class LoginFilter implements Filter {
 			throws IOException, ServletException {
 		// we are now intercepting a coming request
 		HttpServletRequest req = (HttpServletRequest) request;
+		System.out.println("=== filter === " + req.getMethod() + " : " + LocalDateTime.now());
 		// get token
 		String token = req.getHeader("token");
 		if (token != null) {
 			Session session = sessionContext.getSession(token);
 			if (session != null) {
 				// there is an active session - what to do?
-				System.out.println("SESSION good - forward the request");
+				System.out.println("=== filter === SESSION good - forward the request");
 				chain.doFilter(request, response);
+				System.out.println("==========================");
 				return;
 			}
 		}
 
-		// if we are here - there is no session
+		// if we are here - there is no session or prefligth request (no token header)
 		HttpServletResponse resp = (HttpServletResponse) response;
-		System.out.println("NO SESSION - block request and send error to client");
-		resp.sendError(HttpStatus.UNAUTHORIZED.value(), "You are not logged in");
+
+		if (req.getMethod().equalsIgnoreCase("OPTIONS")) {
+			System.out.println("=== filter === this is preflight: " + req.getMethod());
+			chain.doFilter(request, response);
+			System.out.println("==========================");
+		} else {
+			System.out.println("=== filter === NO SESSION - block request and send error to client");
+			resp.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+			resp.sendError(HttpStatus.UNAUTHORIZED.value(), "You are not logged in");
+			System.out.println("==========================");
+		}
+//		resp.setHeader("Access-Control-Allow-Headers", "token");
 
 	}
 
