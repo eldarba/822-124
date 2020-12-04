@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Document</title>
+</head>
+
+<body style="background-color: chocolate;">
+    <div>
+        <input id="user-name" type="text" placeholder="user name">
+    </div>
+    <div>
+        <button onclick="login()">login</button>
+        <button onclick="logout()">logout</button>
+    </div>
+    <hr>
+    <div>
+        <button onclick="greet()">greet</button>
+        <span id="greet-response"></span>
+    </div>
+    <hr>
+    <div>
+        <input id="person-id" type="number" placeholder="id">
+        <br>
+        <input id="person-name" type="text" placeholder="name">
+        <br>
+        <input id="person-age" type="number" placeholder="age">
+        <br>
+        <button onclick="addPerson()">add Person</button>
+        <button onclick="getPerson()">get Person</button>
+        <br>
+        <span id="add-get-response"></span>
+    </div>
+    <script>
+        function login() {
+            let req = new XMLHttpRequest();
+            req.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        let token = this.responseText;
+                        window.sessionStorage.setItem("token", token);
+                        console.dir(sessionStorage);
+                    }
+                }
+            };
+            let userName = document.getElementById("user-name").value;
+            req.open("POST", "http://localhost:8080/login/" + userName);
+            req.send();
+        }
+    </script>
+</body>
+
+</html>

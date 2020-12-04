@@ -80,18 +80,13 @@ public class MyController {
 
 	@GetMapping("/person/{id}")
 	public ResponseEntity<Person> getPerson(@RequestHeader String token, @PathVariable int id) {
-		try {
-			Person person = personsMap.get(id);
+		Person person = personsMap.get(id);
 
-			if (person != null) {
-				return ResponseEntity.ok(person);
-			} else {
+		if (person != null) {
+			return ResponseEntity.ok(person);
+		} else {
 //				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("id " + id + " not found");
-				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "get person failed");
-			}
-		} catch (Exception e) {
-			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
-					": get person failed - " + e.getMessage(), e);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "get person failed");
 		}
 	}
 
