@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "bread",
+    "price": 5.32,
+    "stock": 150
+  },
+  {
+    "id": 2,
+    "name": "pie",
+    "price": 6,
+    "stock": 200
+  },
+  {
+    "id": 3,
+    "name": "pizza",
+    "price": 23.5,
+    "stock": 25
+  },
+  {
+    "id": 4,
+    "name": "milk",
+    "price": 8.7,
+    "stock": 300
+  },
+  {
+    "id": 5,
+    "name": "potatos",
+    "price": 2,
+    "stock": 4000
+  }
+]

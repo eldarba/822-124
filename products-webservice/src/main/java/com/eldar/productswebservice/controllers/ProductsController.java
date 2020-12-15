@@ -18,12 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductsController {
 
 	private Map<Integer, Product> map = new HashMap<Integer, Product>();
+	private int idCounter;
 
 	@PostMapping("add")
-	public void addProduct(@RequestBody Product product) {
+	public Product addProduct(@RequestBody Product product) {
+		product.setId(++idCounter);
 		System.out.println("add");
 		map.put(product.getId(), product);
 		System.out.println(map);
+		return product;
 	}
 
 	@GetMapping("get/{id}")
