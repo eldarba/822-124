@@ -17,20 +17,42 @@ public class ProductsWebserviceApplication {
 
 	@Bean
 	public FilterRegistrationBean<LoginFilter> loginFilter() {
-		FilterRegistrationBean<LoginFilter> registrationBean = new FilterRegistrationBean<>();
-		registrationBean.setFilter(new LoginFilter());
-		registrationBean.addUrlPatterns("/products/*");
-		registrationBean.setOrder(1);
-		return registrationBean;
+		FilterRegistrationBean<LoginFilter> registration = new FilterRegistrationBean<>();
+		registration.setFilter(new LoginFilter());
+		registration.addUrlPatterns("/products/get-all");
+		registration.setOrder(1);
+		registration.setName("aaa");
+		return registration;
 	}
 
 	@Bean
+	public FilterRegistrationBean<LoginFilter> loginFilter2() {
+		FilterRegistrationBean<LoginFilter> registration = new FilterRegistrationBean<>();
+		registration.setFilter(new LoginFilter());
+		registration.addUrlPatterns("/products/add");
+		registration.setOrder(1);
+		registration.setName("aaa");
+		return registration;
+	}
+
+//	@Bean
 	public FilterRegistrationBean<OtherFilter> otherFilter() {
-		FilterRegistrationBean<OtherFilter> registrationBean = new FilterRegistrationBean<>();
-		registrationBean.setFilter(new OtherFilter());
-		registrationBean.addUrlPatterns("/products/*");
-		registrationBean.setOrder(2);
-		return registrationBean;
+		FilterRegistrationBean<OtherFilter> registration = new FilterRegistrationBean<>();
+		registration.setFilter(new OtherFilter());
+		registration.addUrlPatterns("/products/*");
+		registration.setOrder(3);
+		registration.setName("ccc");
+		return registration;
+	}
+
+//	@Bean
+	public FilterRegistrationBean<OtherFilter> otherFilter2() {
+		FilterRegistrationBean<OtherFilter> registration = new FilterRegistrationBean<>();
+		registration.setFilter(new OtherFilter());
+		registration.addUrlPatterns("/products/*");
+		registration.setOrder(4);
+		registration.setName("ddd");
+		return registration;
 	}
 
 }

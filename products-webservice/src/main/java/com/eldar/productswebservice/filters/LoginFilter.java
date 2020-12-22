@@ -16,10 +16,17 @@ public class LoginFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println(">>> login filter");
+		System.out.print(">>> login filter");
 		HttpServletRequest req = (HttpServletRequest) request;
 		String token = req.getHeader("token");
-		System.out.println("token: " + token);
+		System.out.print(" - token: " + token + " URI: " + req.getRequestURI());
+		if (req.getRequestURI().contains("add")) {
+			System.out.println(" - you are adding peoducts");
+		} else if (req.getRequestURI().contains("get")) {
+			System.out.println(" - you are getting peoducts");
+		} else {
+			System.out.println(" - you are doing something else");
+		}
 		chain.doFilter(request, response);
 		System.out.println("<<< login filter");
 
