@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.core.beans.Person;
+import app.core.beans.PersonsListWrapper;
 
 @RestController
 @RequestMapping("/api")
@@ -50,6 +51,18 @@ public class MyConteroller {
 	@GetMapping("/person")
 	public Person getPerson() {
 		return new Person(101, "Yosi", 25);
+	}
+
+	@GetMapping("/person/all")
+	public List<Person> getAllPersons() {
+		return this.persons;
+	}
+
+	@GetMapping("/person/all/wrapper")
+	public PersonsListWrapper getAllPersonsWrapped() {
+		PersonsListWrapper wrapper = new PersonsListWrapper();
+		wrapper.setPersons(persons);
+		return wrapper;
 	}
 
 }
