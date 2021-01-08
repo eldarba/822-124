@@ -11,6 +11,9 @@ public class PrinterClient {
 
 		printer = PrinterFactory.createPrinter(PrinterType.HTML);
 		printer.print("hello world");
+
+		printer = PrinterFactory.createPrinter(PrinterType.XML);
+		printer.print("hello world");
 	}
 
 }

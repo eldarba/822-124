@@ -2,6 +2,6 @@ package a;
 
 public enum PrinterType {
 
-	PLAIN_TEXT, HTML
+	PLAIN_TEXT, HTML, XML
 
 }

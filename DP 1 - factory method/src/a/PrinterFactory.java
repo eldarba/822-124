@@ -13,8 +13,10 @@ public class PrinterFactory {
 		case HTML:
 			printer = new HtmlPrinter("HTML printer", "black");
 			break;
+		case XML:
+			printer = new XmlPrinter("XML printer", "black");
+			break;
 		}
-
 		return printer;
 	}
 
