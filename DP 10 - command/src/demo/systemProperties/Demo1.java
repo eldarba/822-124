@@ -1,4 +1,4 @@
-package a;
+package demo.systemProperties;
 
 public class Demo1 {
 
