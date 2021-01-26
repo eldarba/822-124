@@ -1,4 +1,4 @@
-package b.streamApi;
+package b.streamApi.nonTerminalOperations;
 
 import java.util.ArrayList;
 import java.util.List;

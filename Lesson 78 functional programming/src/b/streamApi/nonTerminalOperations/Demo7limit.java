@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Demo6collect {
+public class Demo7limit {
 
 	public static void main(String[] args) {
 
@@ -16,8 +16,9 @@ public class Demo6collect {
 		list.add("Two");
 		list.add("Three");
 
-		// distinct is a non-terminal operation
-		Stream<String> stream = list.stream().distinct();
+		// limit is a non-terminal operation that will limit the number of elements in
+		// the stream
+		Stream<String> stream = list.stream().limit(3);
 
 		// collect is a terminal operation - starts iteration and processing
 		List<String> uniqueList = stream.collect(Collectors.toList());
