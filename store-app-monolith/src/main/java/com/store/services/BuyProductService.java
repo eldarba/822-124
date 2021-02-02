@@ -15,7 +15,7 @@ public class BuyProductService {
 		if (this.storeRepository.isExist(productName)) {
 			return "success buy: " + productName;
 		} else {
-			return "success failed: " + productName + " not found";
+			return "buy failed: " + productName + " not found";
 		}
 	}
 }

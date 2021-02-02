@@ -2,6 +2,7 @@ package com.store.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,7 +16,7 @@ public class BuyProductsController {
 	private BuyProductService service;
 
 	@GetMapping("/products/buy/{productName}")
-	public String buyProduct(String productName) {
+	public String buyProduct(@PathVariable String productName) {
 		return this.service.buyProduct(productName);
 	}
 }
