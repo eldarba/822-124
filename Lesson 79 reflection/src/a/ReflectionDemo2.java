@@ -49,12 +49,17 @@ public class ReflectionDemo2 {
 			System.out.println(constructor);
 		}
 
+		System.out.println("*** fetch a ctor and use it ==============");
 		// fetch a ctor and use it
 		Constructor<Employee> ctor = clazz.getDeclaredConstructor(int.class, String.class);
+		System.out.println("is this reflected object accessible to caller? " + ctor.canAccess(null));
+		ctor.setAccessible(true);
+		System.out.println("is this reflected object accessible to caller? " + ctor.canAccess(null));
 		Employee e = ctor.newInstance(101, "Dan");
 		System.out.println(e);
 
 		// fetch a method and use it
+		System.out.println("*** fetch a method and use it ==============");
 		Method method = Employee.class.getDeclaredMethod("performTask", String.class, int.class);
 		Object result = method.invoke(e, "End the day", 5);
 		System.out.println(result);
