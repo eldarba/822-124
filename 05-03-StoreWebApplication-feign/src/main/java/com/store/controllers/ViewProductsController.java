@@ -18,7 +18,11 @@ public class ViewProductsController {
 
 	@GetMapping("/products/view")
 	public Set<String> getProducts() {
-		System.out.println("fetching produucts");
 		return this.service.getProducts();
+	}
+
+	@GetMapping("/greet")
+	public String greet() {
+		return "Ho ho";
 	}
 }

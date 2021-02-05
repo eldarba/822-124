@@ -17,7 +17,6 @@ public class BuyProductsController {
 
 	@GetMapping("/products/buy/{productName}")
 	public String buyProduct(@PathVariable String productName) {
-		System.out.println("Buying: " + productName);
 		return this.service.buyProduct(productName);
 	}
 }
